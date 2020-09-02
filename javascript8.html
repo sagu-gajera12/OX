@@ -1,0 +1,104 @@
+<html>
+<head>
+<style>
+.main{
+width:306px;
+height:306px;
+border:1px solid black;
+}
+.d1
+{
+border:1px solid black;
+width:100px;
+height:100px;
+float:left;
+}
+.d2
+{
+clear:left;
+}
+</style>
+<script>
+f=true;
+f1=false;
+c=0;
+function fn(s)
+{
+
+ var x=document.getElementById(s);
+ var temp=document.getElementById(s).innerHTML;
+  
+  if(temp!="")
+  {
+
+  return
+  }
+  
+   if(f)
+   {
+        x.style.fontSize="70px"   
+x.style.textAlign="center";		
+   x.innerHTML="O";
+   c++;
+   f=false;
+   }else
+   {
+    x.style.fontSize="70px";
+	x.style.textAlign="center";
+   x.innerHTML="X";
+   c++;
+   f=true;
+
+   }
+   win('1','2','3');
+   win('4','5','6');
+   win('7','8','9');
+   win('1','5','9');
+   win('3','5','7');
+   win('1','4','7');
+   win('2','5','8');
+   win('3','6','9');
+   
+   
+   if(c==9&&!f1)
+   {
+     alert("match draw")
+	 location.reload();
+   }
+}
+function win(x,y,z)
+{
+  var x1=document.getElementById(x).innerHTML;
+  var y1=document.getElementById(y).innerHTML;
+  var z1=document.getElementById(z).innerHTML;
+  if(x1=='O'&&y1=='O'&&z1=='O')
+  {
+    alert("O win")
+	location.reload();
+	f1=true;
+  }
+  if(x1=='X'&&y1=='X'&&z1=='X')
+  {
+    alert("X win")
+	location.reload();
+	f1=true;
+  }
+}
+</script>
+
+</head>
+<body>
+<div  class="main"  >
+<div  class="d1" id="1" onclick="fn('1')"></div>
+<div class="d1" id="2" onclick="fn('2')"></div>
+<div class="d1" id="3" onclick="fn('3')"></div>
+<div class="d1 d2" id="4" onclick="fn('4')"></div>
+<div class="d1" id="5" onclick="fn('5')"></div>
+<div class="d1" id="6" onclick="fn('6')"></div>
+<div class="d1 d2" id="7" onclick="fn('7')"></div>
+<div class="d1" id="8" onclick="fn('8')"></div>
+<div class="d1" id="9" onclick="fn('9')"></div>
+</div>
+
+</body>
+</html>
