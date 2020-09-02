@@ -5,6 +5,9 @@
 width:306px;
 height:306px;
 border:1px solid black;
+position:absolute;
+left:calc(50% - 153px);
+top:calc(50% - 153px);
 }
 .d1
 {
@@ -21,34 +24,88 @@ clear:left;
 <script>
 f=true;
 f1=false;
-c=0;
+f2=false;
+c=1;
 function fn(s)
 {
-
  var x=document.getElementById(s);
  var temp=document.getElementById(s).innerHTML;
-  
-  if(temp!="")
-  {
-
-  return
-  }
-  
+ 
+ if(temp!="")
+ {
+ return
+ }
+   
    if(f)
    {
-        x.style.fontSize="70px"   
-x.style.textAlign="center";		
-   x.innerHTML="O";
-   c++;
-   f=false;
-   }else
+           x.innerHTML="O"
+	       x.style.fontSize="70px"   
+          x.style.textAlign="center";		
+	 c++;
+   }
+   
+   
+   if(x!=5&&c==2)	
    {
-    x.style.fontSize="70px";
-	x.style.textAlign="center";
-   x.innerHTML="X";
-   c++;
-   f=true;
+    var y1=document.getElementById(3);
+	var y2=document.getElementById(7);
+    if(y1.innerHTML=="")
+	{
+	  y1.innerHTML="X";
+	          y1.style.fontSize="70px"   
+y1.style.textAlign="center";	
+	
+	}else
+	{
+	y2.innerHTML="X";
+	        y2.style.fontSize="70px"   
+y2.style.textAlign="center";		
+	}
+	c++;
+	
 
+	
+}else
+{
+f2=true;
+   check('1','2','3');
+   check('4','5','6');
+   check('7','8','9');
+   check('1','5','9');
+   check('3','5','7');
+   check('1','4','7');
+   check('2','5','8');
+   check('3','6','9');
+   if(f2)
+   {
+      var z=document.getElementById(9);
+	  if(z.innerHTML=="")
+	  {
+	   z.innerHTML="X";
+        z.style.fontSize="70px"   
+        z.style.textAlign="center";	
+		f2=false;
+c++;		
+	  }
+	  z=document.getElementById(7);
+	  if(f2&&z.innerHTML=="")
+	  {
+      z.innerHTML="X";
+	  z.style.fontSize="70px"   
+        z.style.textAlign="center";	
+		f2=false;
+c++;		
+
+	  }
+	  z=document.getElementById(3);
+	  if(f2&&z.innerHTML=="")
+	  {
+	  z.innerHTML="X";
+	  z.style.fontSize="70px"   
+        z.style.textAlign="center";	
+f2=false;		
+c++;
+	  }
    }
    win('1','2','3');
    win('4','5','6');
@@ -58,13 +115,16 @@ x.style.textAlign="center";
    win('1','4','7');
    win('2','5','8');
    win('3','6','9');
-   
-   
-   if(c==9&&!f1)
+   if(!f1&&c==9)
    {
-     alert("match draw")
-	 location.reload();
+   alert("Match Draw");
+   location.reload();
    }
+   
+   
+}
+
+
 }
 function win(x,y,z)
 {
@@ -73,23 +133,84 @@ function win(x,y,z)
   var z1=document.getElementById(z).innerHTML;
   if(x1=='O'&&y1=='O'&&z1=='O')
   {
+    
     alert("O win")
 	location.reload();
 	f1=true;
   }
   if(x1=='X'&&y1=='X'&&z1=='X')
   {
+  
     alert("X win")
 	location.reload();
 	f1=true;
   }
+}
+
+function check(x,y,z)
+{
+  var x1=document.getElementById(x).innerHTML;
+  var y1=document.getElementById(y).innerHTML;
+  var z1=document.getElementById(z).innerHTML;
+  <!-- alert(f2) -->
+  if(f2&&((x1=='X'&&y1=='X'&&z1=="")||(x1=='X'&&y1==""&&z1=='X')||(x1==""&&y1=='X'&&z1=='X')))
+  {
+    if((x1=='X'&&y1=='X'&&z1==''))
+	{
+	document.getElementById(z).innerHTML='X';
+	document.getElementById(z).style.fontSize="70px";
+	document.getElementById(z).style.textAlign="center";
+
+	}else if((x1=='X'&&y1==''&&z1=='X'))
+	{
+	document.getElementById(y).innerHTML='X';
+	document.getElementById(y).style.fontSize="70px";
+	document.getElementById(y).style.textAlign="center";
+
+
+	}else {
+		document.getElementById(x).innerHTML='X';
+		document.getElementById(x).style.fontSize="70px";
+	document.getElementById(x).style.textAlign="center";
+
+	}
+	c++;
+	f2=false;
+  }else if(f2&&((x1=='O'&&y1=='O'&&z1=="")||(x1=='O'&&y1==""&&z1=='O')||(x1==""&&y1=='O'&&z1=='O'))){
+  
+    if((x1=='O'&&y1=='O'&&z1==""))
+	{
+	document.getElementById(z).innerHTML='X';
+	document.getElementById(z).style.fontSize="70px";
+	document.getElementById(z).style.textAlign="center";
+
+
+	}else if((x1=='O'&&y1==""&&z1=='O'))
+	{
+	document.getElementById(y).innerHTML='X';
+	document.getElementById(y).style.fontSize="70px";
+	document.getElementById(y).style.textAlign="center";
+
+
+	}else {
+		document.getElementById(x).innerHTML='X';
+		document.getElementById(x).style.fontSize="70px";
+	document.getElementById(x).style.textAlign="center";
+
+	}
+	c++;
+	f2=false;
+  }
+  
+  
+     
 }
 </script>
 
 </head>
 <body>
 <div  class="main"  >
-<div  class="d1" id="1" onclick="fn('1')"></div>
+<div  class="d1" id="1" onclick="fn('1')" style="font-size:70px;text-align:center">X</div>
 <div class="d1" id="2" onclick="fn('2')"></div>
 <div class="d1" id="3" onclick="fn('3')"></div>
 <div class="d1 d2" id="4" onclick="fn('4')"></div>
