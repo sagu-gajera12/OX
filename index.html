@@ -68,14 +68,23 @@ y2.style.textAlign="center";
 }else
 {
 f2=true;
-   check('1','2','3');
-   check('4','5','6');
-   check('7','8','9');
-   check('1','5','9');
-   check('3','5','7');
-   check('1','4','7');
-   check('2','5','8');
-   check('3','6','9');
+   checkx('1','2','3');
+   checkx('4','5','6');
+   checkx('7','8','9');
+   checkx('1','5','9');
+   checkx('3','5','7');
+   checkx('1','4','7');
+   checkx('2','5','8');
+   checkx('3','6','9');
+   
+      checko('1','2','3');
+   checko('4','5','6');
+   checko('7','8','9');
+   checko('1','5','9');
+   checko('3','5','7');
+   checko('1','4','7');
+   checko('2','5','8');
+   checko('3','6','9');
    if(f2)
    {
       var z=document.getElementById(9);
@@ -147,7 +156,7 @@ function win(x,y,z)
   }
 }
 
-function check(x,y,z)
+function checkx(x,y,z)
 {
   var x1=document.getElementById(x).innerHTML;
   var y1=document.getElementById(y).innerHTML;
@@ -157,12 +166,14 @@ function check(x,y,z)
   {
     if((x1=='X'&&y1=='X'&&z1==''))
 	{
+	
 	document.getElementById(z).innerHTML='X';
 	document.getElementById(z).style.fontSize="70px";
 	document.getElementById(z).style.textAlign="center";
 
 	}else if((x1=='X'&&y1==''&&z1=='X'))
 	{
+	
 	document.getElementById(y).innerHTML='X';
 	document.getElementById(y).style.fontSize="70px";
 	document.getElementById(y).style.textAlign="center";
@@ -176,7 +187,14 @@ function check(x,y,z)
 	}
 	c++;
 	f2=false;
-  }else if(f2&&((x1=='O'&&y1=='O'&&z1=="")||(x1=='O'&&y1==""&&z1=='O')||(x1==""&&y1=='O'&&z1=='O'))){
+  }
+}
+function checko(x,y,z)
+{
+  var x1=document.getElementById(x).innerHTML;
+  var y1=document.getElementById(y).innerHTML;
+  var z1=document.getElementById(z).innerHTML;
+  if(f2&&((x1=='O'&&y1=='O'&&z1=="")||(x1=='O'&&y1==""&&z1=='O')||(x1==""&&y1=='O'&&z1=='O'))){
   
     if((x1=='O'&&y1=='O'&&z1==""))
 	{
@@ -200,8 +218,7 @@ function check(x,y,z)
 	}
 	c++;
 	f2=false;
-  }
-  
+  }  
   
      
 }
